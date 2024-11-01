@@ -23,6 +23,12 @@ public class Item {
     };
   }
 
+  void updateQuality() {
+    if (notLoseAllQuality()) {
+      decreaseQuality();
+    }
+  }
+
   void updateQualityIfFinishSellIn() {
     if (isAgedBrie() && isQualityBellowTheMinimum()) {
       increaseQuality();
@@ -33,15 +39,6 @@ public class Item {
     }
   }
 
-  void updateQuality() {
-    if (isQualityBellowTheMinimum() && isAgedBrie()) {
-      increaseQuality();
-    } else if (isQualityBellowTheMinimum() && isBackStage()) {
-      increaseQualityOfBackStage();
-    } else if (isRegular() && notLoseAllQuality()) {
-      decreaseQuality();
-    }
-  }
 
   boolean notLoseAllQuality() {
     return quality > 0;
