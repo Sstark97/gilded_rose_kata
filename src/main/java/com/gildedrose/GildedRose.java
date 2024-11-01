@@ -1,25 +1,19 @@
 package com.gildedrose;
 
 import java.util.Arrays;
+import java.util.List;
 
 class GildedRose {
 
-  Item[] items;
+  List<UpdatableItem> items;
 
   public GildedRose(Item[] items) {
-    this.items = items;
+    this.items = Arrays.stream(items)
+        .map(item -> ItemFactory.of(item.name, item.sellIn, item.quality))
+        .toList();
   }
 
-  public void updateQualityOld() {
-    Arrays.stream(items).forEach(Item::updateQuality);
-
-    Arrays.stream(items)
-        .filter(item -> !(item instanceof Sulfuras))
-        .forEach(Item::decreaseSellIn);
-
-    Arrays.stream(items)
-        .filter(Item::finishSellIn)
-        .forEach(Item::updateQualityIfFinishSellIn);
+  public void updateQuality() {
+    items.forEach(UpdatableItem::update);
   }
-
 }

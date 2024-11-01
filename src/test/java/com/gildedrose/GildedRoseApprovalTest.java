@@ -16,9 +16,9 @@ class GildedRoseApprovalTest {
   void foo() {
     Item[] items = new Item[]{new Item("foo", 0, 0)};
     GildedRose app = new GildedRose(items);
-    app.updateQualityOld();
+    app.updateQuality();
 
-    Approvals.verifyAll("Items", items);
+    Approvals.verifyAll("Items", app.items);
   }
 
   @Test
