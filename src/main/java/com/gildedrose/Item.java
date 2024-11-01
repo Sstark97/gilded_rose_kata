@@ -4,14 +4,37 @@ public class Item {
 
   private final String name;
 
-  public int sellIn;
+  private int sellIn;
 
-  public int quality;
+  private int quality;
 
   public Item(String name, int sellIn, int quality) {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
+  }
+
+  boolean notLoseAllQuality() {
+    return quality > 0;
+  }
+
+  boolean isQualityBellowTheMinimum() {
+    return quality < 50;
+  }
+
+  boolean finishSellIn() {
+    return sellIn < 0;
+  }
+
+  void increaseQualityOfBackStage() {
+    increaseQuality();
+    if (sellIn < 11 && quality < 50) {
+      increaseQuality();
+    }
+
+    if (sellIn < 6 && quality < 50) {
+      increaseQuality();
+    }
   }
 
   void loseAllQuality() {
