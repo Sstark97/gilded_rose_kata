@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 public class AgedBrie extends Item implements UpdatableItem {
+  private static final int MAXIMUM_QUALITY = 50;
 
   public AgedBrie(String name, int sellIn, int quality) {
     super(name, sellIn, quality);
@@ -16,13 +17,13 @@ public class AgedBrie extends Item implements UpdatableItem {
   }
 
   private void updateQuality() {
-    if (isQualityBellowTheMinimum()) {
+    if (isQualityBellowTheMaximum()) {
       increaseQuality();
     }
   }
 
   private void updateQualityIfFinishSellIn() {
-    if (isQualityBellowTheMinimum() && isSellInFinish()) {
+    if (isQualityBellowTheMaximum() && isSellInFinish()) {
       increaseQuality();
     }
   }
@@ -31,8 +32,8 @@ public class AgedBrie extends Item implements UpdatableItem {
     return sellIn < 0;
   }
 
-  private boolean isQualityBellowTheMinimum() {
-    return quality < 50;
+  private boolean isQualityBellowTheMaximum() {
+    return quality < MAXIMUM_QUALITY;
   }
 
   private void increaseQuality() {

@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 public class BackstagePasses extends Item implements UpdatableItem {
+  private static final int MAXIMUM_QUALITY = 50;
 
   public BackstagePasses(String name, int sellIn, int quality) {
     super(name, sellIn, quality);
@@ -16,7 +17,7 @@ public class BackstagePasses extends Item implements UpdatableItem {
   }
 
   private void updateQuality() {
-    if (isQualityBellowTheMinimum()) {
+    if (isQualityBellowTheMaximum()) {
       increaseQuality();
       increaseQualityIfElevenDaysOfSellInRemain();
       increaseQualityIfSixDaysOfSellInRemain();
@@ -24,13 +25,13 @@ public class BackstagePasses extends Item implements UpdatableItem {
   }
 
   private void increaseQualityIfSixDaysOfSellInRemain() {
-    if (isQualityBellowTheMinimum() && sellIn < 6) {
+    if (isQualityBellowTheMaximum() && sellIn < 6) {
       increaseQuality();
     }
   }
 
   private void increaseQualityIfElevenDaysOfSellInRemain() {
-    if (isQualityBellowTheMinimum() && sellIn < 11) {
+    if (isQualityBellowTheMaximum() && sellIn < 11) {
       increaseQuality();
     }
   }
@@ -45,8 +46,8 @@ public class BackstagePasses extends Item implements UpdatableItem {
     return sellIn < 0;
   }
 
-  private boolean isQualityBellowTheMinimum() {
-    return quality < 50;
+  private boolean isQualityBellowTheMaximum() {
+    return quality < MAXIMUM_QUALITY;
   }
 
   private void increaseQuality() {
