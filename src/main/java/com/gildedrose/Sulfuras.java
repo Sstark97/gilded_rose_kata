@@ -10,4 +10,9 @@ public class Sulfuras extends Item {
   void updateQuality() {
     // Do nothing
   }
+
+  @Override
+  void updateQualityIfFinishSellIn() {
+    // Do nothing
+  }
 }

@@ -12,4 +12,11 @@ public class AgedBrie extends Item {
       increaseQuality();
     }
   }
+
+  @Override
+  void updateQualityIfFinishSellIn() {
+    if (isQualityBellowTheMinimum()) {
+      increaseQuality();
+    }
+  }
 }

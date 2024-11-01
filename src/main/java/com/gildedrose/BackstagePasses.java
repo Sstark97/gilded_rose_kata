@@ -8,8 +8,20 @@ public class BackstagePasses extends Item {
 
   @Override
   void updateQuality() {
-    if (isQualityBellowTheMinimum() && isBackStage()) {
-      increaseQualityOfBackStage();
+    if (isQualityBellowTheMinimum()) {
+      increaseQuality();
+      if (sellIn < 11 && quality < 50) {
+        increaseQuality();
+      }
+
+      if (sellIn < 6 && quality < 50) {
+        increaseQuality();
+      }
     }
+  }
+
+  @Override
+  void updateQualityIfFinishSellIn() {
+    quality = 0;
   }
 }

@@ -14,7 +14,7 @@ class GildedRose {
     Arrays.stream(items).forEach(Item::updateQuality);
 
     Arrays.stream(items)
-        .filter(item -> !item.isSulfuras())
+        .filter(item -> !(item instanceof Sulfuras))
         .forEach(Item::decreaseSellIn);
 
     Arrays.stream(items)
