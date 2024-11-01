@@ -9,28 +9,28 @@ class GildedRose {
 
     public void updateQuality() {
       for (Item item : items) {
-        if (isAgedBrie(item) || isBackStage(item)) {
+        if (item.isAgedBrie() || item.isBackStage()) {
           increaseQualityOf(item);
         } else {
-          if (item.quality > 0 && !isSulfuras(item)) {
+          if (item.quality > 0 && !item.isSulfuras()) {
             item.decreaseQuality();
           }
         }
 
-        if (!isSulfuras(item)) {
+        if (!item.isSulfuras()) {
           item.sellIn = item.sellIn - 1;
         }
 
         if (item.sellIn < 0) {
-          if (isAgedBrie(item)) {
+          if (item.isAgedBrie()) {
             if (item.quality < 50) {
               item.increaseQuality();
             }
           } else {
-            if (isBackStage(item)) {
+            if (item.isBackStage()) {
               item.quality = 0;
             } else {
-              if (item.quality > 0 && !isSulfuras(item)) {
+              if (item.quality > 0 && !item.isSulfuras()) {
                 item.decreaseQuality();
               }
             }
@@ -42,7 +42,7 @@ class GildedRose {
   private static void increaseQualityOf(Item item) {
     if (item.quality < 50) {
       item.increaseQuality();
-      if (isBackStage(item)) {
+      if (item.isBackStage()) {
         increaseQualityOfBackStage(item);
       }
     }
@@ -58,15 +58,4 @@ class GildedRose {
     }
   }
 
-  private static boolean isSulfuras(Item item) {
-    return item.name.equals("Sulfuras, Hand of Ragnaros");
-  }
-
-  private static boolean isBackStage(Item item) {
-    return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
-  }
-
-  private static boolean isAgedBrie(Item item) {
-    return item.name.equals("Aged Brie");
-  }
 }

@@ -2,7 +2,7 @@ package com.gildedrose;
 
 public class Item {
 
-  public String name;
+  private final String name;
 
   public int sellIn;
 
@@ -12,6 +12,18 @@ public class Item {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
+  }
+
+  boolean isAgedBrie() {
+    return name.equals("Aged Brie");
+  }
+
+  boolean isBackStage() {
+    return name.equals("Backstage passes to a TAFKAL80ETC concert");
+  }
+
+  boolean isSulfuras() {
+    return name.equals("Sulfuras, Hand of Ragnaros");
   }
 
   void increaseQuality() {
