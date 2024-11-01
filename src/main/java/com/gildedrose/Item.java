@@ -14,6 +14,26 @@ public class Item {
     this.quality = quality;
   }
 
+  void updateQualityIfFinishSellIn() {
+    if (isAgedBrie() && isQualityBellowTheMinimum()) {
+      increaseQuality();
+    } else if (isBackStage()) {
+      loseAllQuality();
+    } else if (notLoseAllQuality() && isRegular()) {
+      decreaseQuality();
+    }
+  }
+
+  void updateQuality() {
+    if (isQualityBellowTheMinimum() && isAgedBrie()) {
+      increaseQuality();
+    } else if (isQualityBellowTheMinimum() && isBackStage()) {
+      increaseQualityOfBackStage();
+    } else if (isRegular() && notLoseAllQuality()) {
+      decreaseQuality();
+    }
+  }
+
   boolean notLoseAllQuality() {
     return quality > 0;
   }
