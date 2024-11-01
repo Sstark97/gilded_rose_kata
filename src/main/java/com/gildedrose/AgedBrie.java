@@ -9,10 +9,10 @@ public class AgedBrie extends Item implements UpdatableItem {
   @Override
   public void update() {
     updateQuality();
-    sellIn = sellIn - 1;
-    if (sellIn < 0) {
-      updateQualityIfFinishSellIn();
-    }
+
+    decreaseSellIn();
+
+    updateQualityIfFinishSellIn();
   }
 
   public void updateQuality() {
@@ -22,13 +22,17 @@ public class AgedBrie extends Item implements UpdatableItem {
   }
 
   public void updateQualityIfFinishSellIn() {
-    if (isQualityBellowTheMinimum()) {
+    if (isQualityBellowTheMinimum() && sellIn < 0) {
       increaseQuality();
     }
   }
 
   private void increaseQuality() {
     quality = quality + 1;
+  }
+
+  private void decreaseSellIn() {
+    sellIn = sellIn - 1;
   }
 
   private boolean isQualityBellowTheMinimum() {

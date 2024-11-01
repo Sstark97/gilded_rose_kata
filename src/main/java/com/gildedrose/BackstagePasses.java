@@ -9,10 +9,10 @@ public class BackstagePasses extends Item implements UpdatableItem {
   @Override
   public void update() {
     updateQuality();
-    sellIn = sellIn - 1;
-    if (sellIn < 0) {
-      updateQualityIfFinishSellIn();
-    }
+
+    decreaseSellIn();
+
+    updateQualityIfFinishSellIn();
   }
 
   public void updateQuality() {
@@ -29,11 +29,17 @@ public class BackstagePasses extends Item implements UpdatableItem {
   }
 
   public void updateQualityIfFinishSellIn() {
-    quality = 0;
+    if (sellIn < 0) {
+      quality = 0;
+    }
   }
 
   private void increaseQuality() {
     quality = quality + 1;
+  }
+
+  private void decreaseSellIn() {
+    sellIn = sellIn - 1;
   }
 
   private boolean isQualityBellowTheMinimum() {
