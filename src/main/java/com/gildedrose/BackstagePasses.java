@@ -18,13 +18,20 @@ public class BackstagePasses extends Item implements UpdatableItem {
   private void updateQuality() {
     if (isQualityBellowTheMinimum()) {
       increaseQuality();
-      if (sellIn < 11 && quality < 50) {
-        increaseQuality();
-      }
+      increaseQualityIfElevenDaysOfSellInRemain();
+      increaseQualityIfSixDaysOfSellInRemain();
+    }
+  }
 
-      if (sellIn < 6 && quality < 50) {
-        increaseQuality();
-      }
+  private void increaseQualityIfSixDaysOfSellInRemain() {
+    if (isQualityBellowTheMinimum() && sellIn < 6) {
+      increaseQuality();
+    }
+  }
+
+  private void increaseQualityIfElevenDaysOfSellInRemain() {
+    if (isQualityBellowTheMinimum() && sellIn < 11) {
+      increaseQuality();
     }
   }
 
