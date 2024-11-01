@@ -15,7 +15,7 @@ public class BackstagePasses extends Item implements UpdatableItem {
     updateQualityIfFinishSellIn();
   }
 
-  public void updateQuality() {
+  private void updateQuality() {
     if (isQualityBellowTheMinimum()) {
       increaseQuality();
       if (sellIn < 11 && quality < 50) {
@@ -28,10 +28,18 @@ public class BackstagePasses extends Item implements UpdatableItem {
     }
   }
 
-  public void updateQualityIfFinishSellIn() {
-    if (sellIn < 0) {
+  private void updateQualityIfFinishSellIn() {
+    if (isSellInFinish()) {
       quality = 0;
     }
+  }
+
+  private boolean isSellInFinish() {
+    return sellIn < 0;
+  }
+
+  private boolean isQualityBellowTheMinimum() {
+    return quality < 50;
   }
 
   private void increaseQuality() {
@@ -40,9 +48,5 @@ public class BackstagePasses extends Item implements UpdatableItem {
 
   private void decreaseSellIn() {
     sellIn = sellIn - 1;
-  }
-
-  private boolean isQualityBellowTheMinimum() {
-    return quality < 50;
   }
 }
