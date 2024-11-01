@@ -1,43 +1,47 @@
 package com.gildedrose;
 
 class GildedRose {
-    Item[] items;
+  Item[] items;
 
-    public GildedRose(Item[] items) {
-        this.items = items;
+  public GildedRose(Item[] items) {
+    this.items = items;
+  }
+
+  public void updateQuality() {
+    for (Item item : items) {
+      if (item.isAgedBrie() || item.isBackStage()) {
+        increaseQualityOf(item);
+      } else {
+        if (item.quality > 0 && !item.isSulfuras()) {
+          item.decreaseQuality();
+        }
+      }
     }
 
-    public void updateQuality() {
-      for (Item item : items) {
-        if (item.isAgedBrie() || item.isBackStage()) {
-          increaseQualityOf(item);
-        } else {
-          if (item.quality > 0 && !item.isSulfuras()) {
-            item.decreaseQuality();
+    for (Item item : items) {
+      if (!item.isSulfuras()) {
+        item.sellIn = item.sellIn - 1;
+      }
+    }
+
+    for (Item item : items) {
+      if (item.sellIn < 0) {
+        if (item.isAgedBrie()) {
+          if (item.quality < 50) {
+            item.increaseQuality();
           }
-        }
-
-        if (!item.isSulfuras()) {
-          item.sellIn = item.sellIn - 1;
-        }
-
-        if (item.sellIn < 0) {
-          if (item.isAgedBrie()) {
-            if (item.quality < 50) {
-              item.increaseQuality();
-            }
+        } else {
+          if (item.isBackStage()) {
+            item.quality = 0;
           } else {
-            if (item.isBackStage()) {
-              item.quality = 0;
-            } else {
-              if (item.quality > 0 && !item.isSulfuras()) {
-                item.decreaseQuality();
-              }
+            if (item.quality > 0 && !item.isSulfuras()) {
+              item.decreaseQuality();
             }
           }
         }
       }
     }
+  }
 
   private static void increaseQualityOf(Item item) {
     if (item.quality < 50) {
