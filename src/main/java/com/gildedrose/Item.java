@@ -14,6 +14,10 @@ public class Item {
     this.quality = quality;
   }
 
+  void decreaseSellIn() {
+    sellIn = sellIn - 1;
+  }
+
   boolean isAgedBrie() {
     return name.equals("Aged Brie");
   }

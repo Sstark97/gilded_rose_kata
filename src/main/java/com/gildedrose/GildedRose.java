@@ -1,6 +1,9 @@
 package com.gildedrose;
 
+import java.util.Arrays;
+
 class GildedRose {
+
   Item[] items;
 
   public GildedRose(Item[] items) {
@@ -18,29 +21,21 @@ class GildedRose {
       }
     }
 
-    for (Item item : items) {
-      if (!item.isSulfuras()) {
-        item.sellIn = item.sellIn - 1;
-      }
-    }
+    Arrays.stream(items).filter(item -> !item.isSulfuras()).forEach(Item::decreaseSellIn);
 
-    for (Item item : items) {
-      if (item.sellIn < 0) {
-        if (item.isAgedBrie()) {
-          if (item.quality < 50) {
-            item.increaseQuality();
-          }
-        } else {
-          if (item.isBackStage()) {
-            item.quality = 0;
-          } else {
-            if (item.quality > 0 && !item.isSulfuras()) {
-              item.decreaseQuality();
+    Arrays.stream(items)
+        .filter(item -> item.sellIn < 0)
+        .forEach(item -> {
+          if (item.isAgedBrie()) {
+            if (item.quality < 50) {
+              item.increaseQuality();
             }
+          } else if (item.isBackStage()) {
+            item.quality = 0;
+          } else if (item.quality > 0 && !item.isSulfuras()) {
+            item.decreaseQuality();
           }
-        }
-      }
-    }
+        });
   }
 
   private static void increaseQualityOf(Item item) {
