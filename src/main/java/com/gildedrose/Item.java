@@ -19,7 +19,7 @@ public class Item {
   }
 
   boolean isRegular() {
-    return !isSulfuras() && !isAgedBrie();
+    return !isSulfuras() && !isAgedBrie() && !isBackStage();
   }
 
   void decreaseSellIn() {
