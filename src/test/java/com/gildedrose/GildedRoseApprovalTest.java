@@ -10,10 +10,10 @@ import org.approvaltests.reporters.UseReporter;
 import org.junit.jupiter.api.Test;
 
 @UseReporter(DiffReporter.class)
-public class GildedRoseApprovalTest {
+class GildedRoseApprovalTest {
 
   @Test
-  public void foo() {
+  void foo() {
     Item[] items = new Item[]{new Item("foo", 0, 0)};
     GildedRose app = new GildedRose(items);
     app.updateQualityOld();
@@ -22,7 +22,7 @@ public class GildedRoseApprovalTest {
   }
 
   @Test
-  public void thirtyDays() {
+  void thirtyDays() {
     ByteArrayOutputStream fakeoutput = new ByteArrayOutputStream();
     System.setOut(new PrintStream(fakeoutput));
     System.setIn(new ByteArrayInputStream("a\n".getBytes()));

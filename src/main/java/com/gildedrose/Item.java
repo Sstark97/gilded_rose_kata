@@ -8,10 +8,19 @@ public class Item {
 
   private int quality;
 
-  public Item(String name, int sellIn, int quality) {
+  protected Item(String name, int sellIn, int quality) {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
+  }
+
+  public static Item of(String name, int sellIn, int quality) {
+    return switch (name) {
+      case "Aged Brie" -> new AgedBrie(name, sellIn, quality);
+      case "Backstage passes to a TAFKAL80ETC concert" -> new BackstagePasses(name, sellIn, quality);
+      case "Sulfuras, Hand of Ragnaros" -> new Sulfuras(name, sellIn, quality);
+      default -> new Item(name, sellIn, quality);
+    };
   }
 
   void updateQualityIfFinishSellIn() {
