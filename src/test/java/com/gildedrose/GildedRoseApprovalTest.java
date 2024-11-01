@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 class GildedRoseApprovalTest {
 
   @Test
-  void foo() {
+  void update_quality_of_regular_item_decrease_sell_in_once() {
     Item[] items = new Item[]{new Item("foo", 0, 0)};
     GildedRose app = new GildedRose(items);
     app.updateQuality();
@@ -22,7 +22,7 @@ class GildedRoseApprovalTest {
   }
 
   @Test
-  void thirtyDays() {
+  void update_quality_in_one_month() {
     ByteArrayOutputStream fakeoutput = new ByteArrayOutputStream();
     System.setOut(new PrintStream(fakeoutput));
     System.setIn(new ByteArrayInputStream("a\n".getBytes()));
