@@ -1,8 +1,10 @@
-package com.gildedrose;
+package com.gildedrose.item.types;
 
-public class RegularItem extends Item implements UpdatableItem {
+import com.gildedrose.UpdatableItem;
 
-  public RegularItem(String name, int sellIn, int quality) {
+public class Conjured extends Item implements UpdatableItem {
+
+  public Conjured(String name, int sellIn, int quality) {
     super(name, sellIn, quality);
   }
 
@@ -40,6 +42,6 @@ public class RegularItem extends Item implements UpdatableItem {
   }
 
   private void decreaseQuality() {
-    quality = quality - 1;
+    quality = quality - 2;
   }
 }

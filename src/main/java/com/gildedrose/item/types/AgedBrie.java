@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.item.types;
+
+import com.gildedrose.UpdatableItem;
 
 public class AgedBrie extends Item implements UpdatableItem {
   private static final int MAXIMUM_QUALITY = 50;

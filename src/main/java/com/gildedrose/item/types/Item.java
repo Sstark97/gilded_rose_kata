@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.item.types;
 
 public class Item {
   public String name;

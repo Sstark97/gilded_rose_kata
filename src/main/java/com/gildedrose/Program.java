@@ -1,6 +1,8 @@
 package com.gildedrose;
 
-import static com.gildedrose.ItemTypes.*;
+import com.gildedrose.item.types.Item;
+
+import static com.gildedrose.item.ItemTypes.*;
 
 public class Program {
 

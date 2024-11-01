@@ -1,6 +1,13 @@
-package com.gildedrose;
+package com.gildedrose.item;
 
-import static com.gildedrose.ItemTypes.*;
+import com.gildedrose.UpdatableItem;
+import com.gildedrose.item.types.AgedBrie;
+import com.gildedrose.item.types.BackstagePasses;
+import com.gildedrose.item.types.Conjured;
+import com.gildedrose.item.types.RegularItem;
+import com.gildedrose.item.types.Sulfuras;
+
+import static com.gildedrose.item.ItemTypes.*;
 
 public class ItemFactory {
 
