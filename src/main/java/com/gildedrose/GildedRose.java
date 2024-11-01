@@ -26,13 +26,11 @@ class GildedRose {
     Arrays.stream(items)
         .filter(item -> item.sellIn < 0)
         .forEach(item -> {
-          if (item.isAgedBrie()) {
-            if (item.quality < 50) {
-              item.increaseQuality();
-            }
+          if (item.isAgedBrie() && item.quality < 50) {
+            item.increaseQuality();
           } else if (item.isBackStage()) {
-            item.quality = 0;
-          } else if (item.quality > 0 && !item.isSulfuras()) {
+            item.loseAllQuality();
+          } else if (item.quality > 0 && item.isRegular()) {
             item.decreaseQuality();
           }
         });

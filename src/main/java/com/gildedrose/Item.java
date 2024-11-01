@@ -14,6 +14,14 @@ public class Item {
     this.quality = quality;
   }
 
+  void loseAllQuality() {
+    quality = 0;
+  }
+
+  boolean isRegular() {
+    return !isSulfuras() && !isAgedBrie();
+  }
+
   void decreaseSellIn() {
     sellIn = sellIn - 1;
   }
