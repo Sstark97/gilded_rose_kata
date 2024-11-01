@@ -8,3 +8,7 @@ There are two test cases here with different styles:
 * "thirtyDays" is more similar to the TextTest from the 'Java' version
 
 I suggest choosing one style to develop and deleting the other.
+
+## Requirements
+The requirements for the system are in [GildedRoseRequirements.md](GildedRoseRequirements.md)
+The requirements in Spanish are in [GildedRoseRequirements_es.md](GildedRoseRequirements_es.md)
